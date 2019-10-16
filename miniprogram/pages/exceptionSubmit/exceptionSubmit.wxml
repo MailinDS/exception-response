@@ -1,0 +1,22 @@
+<!--miniprogram/pages/exceptionSubmit/exceptionSubmit.wxml-->
+<view class="container">
+  <view class="input-view">
+    <view class="name-input">{{nameInput}}</view>
+    <view class="department-input">{{departmentInput}}</view>
+    <view class="date-input">{{dateInput}}</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+      <view class="exception-input" style="color:{{multiIndex[0]==-1||multiIndex[1]==-1||multiIndex[2]==-1?'#CCCCCC':'#333333'}}">
+        {{multiIndex[0]==-1?'异常一级':multiArray[0][multiIndex[0]]}}/{{multiIndex[1]==-1?'异常二级':multiArray[1][multiIndex[1]]}}/{{multiIndex[2]==-1?'异常三级':multiArray[2][multiIndex[2]]}}
+      </view>
+    </picker>
+    <block wx:for="{{dwgNoList}}" wx:key="{{index}}">
+      <view class="dwg-no-input-view">
+        <input class="dwg-no-input" type="text" value="{{item}}" bindinput="changeDwgVal" data-id="{{index}}" placeholder="图号" placeholder-class="input-placeholder"></input>
+        <view class="dwg-cut" data-id="{{index}}" bindtap="dwgCut">减</view>
+      </view>
+    </block>
+    <view class="dwg-add" bindtap="dwgAdd">加</view>
+    <input class="project-no-input" type="text" value="{{projectNoInput}}" bindinput="changeProjectNoVal" placeholder="工程号" placeholder-class="input-placeholder"></input>
+    <input class="project-name-input" type="text" value="{{projectNameInput}}" bindinput="changeProjectNameVal" placeholder="工程名称" placeholder-class="input-placeholder"></input>
+  </view>
+</view>

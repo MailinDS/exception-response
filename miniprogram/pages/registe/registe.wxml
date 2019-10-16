@@ -1,0 +1,15 @@
+<!--miniprogram/pages/registe/registe.wxml-->
+<view class="container">
+  <view class="input-view">
+    <input class='name-input' type='text' value='{{inputName}}' bindinput='changeNameVal' placeholder='姓名' placeholder-class="input-placeholder"></input>
+
+    <picker bindchange="bindDepartmentChange" value="{{index}}" range="{{departmentArray}}">
+      <view class="department-input" style="color:{{index==-1?'#CCCCCC':'#333333'}}">
+        {{index==-1?'部门':departmentArray[index]}}
+      </view>
+    </picker>
+
+    <button class="submit-button" type='primary' size='default' bindtap="registe">提交</button>
+
+  </view>
+</view>

@@ -1,0 +1,66 @@
+/* miniprogram/pages/exceptionSubmit/exceptionSubmit.wxss */
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.input-view {
+  width: 690rpx;
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name-input, .department-input, .date-input, .exception-input, .project-no-input, .project-name-input {
+  width: 650rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 18rpx;
+  background-color: white;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.dwg-no-input-view {
+  width: 690rpx;
+  height: 80rpx;
+  margin-top: 18rpx;
+  display: flex;
+  flex-direction: row;
+}
+.dwg-no-input {
+  width: 550rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  background-color: white;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+.dwg-cut {
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 15rpx;
+}
+.dwg-add {
+  width: 80rpx;
+  height: 80rpx;
+  margin-top: 18rpx;
+  position: relative;
+  left: -285rpx;
+}
+
+.input-placeholder {
+  color: #CCCCCC;
+}
+
+

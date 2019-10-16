@@ -1,0 +1,21 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/exceptionSubmit/exceptionSubmit",
+    "pages/exceptionReceive/exceptionReceive",
+    "pages/completeConfirm/completeConfirm",
+    "pages/registe/registe",
+    "pages/deployFunctions/deployFunctions",
+    "pages/mainPage/mainPage",
+    "pages/receiveList/receiveList",
+    "pages/confirmList/confirmList"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "西开异常响应",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,25 @@
+<!--miniprogram/pages/mainPage/mainPage.wxml-->
+<view class="container">
+
+  <!-- 异常提交 -->
+  <view class="uploader">
+    <navigator url="../exceptionSubmit/exceptionSubmit" open-type="navigate" class="uploader-text">
+      <text>提交异常</text>
+    </navigator>
+  </view>
+
+  <!-- 处理异常 -->
+  <view class="uploader">
+    <navigator url="../receiveList/receiveList" open-type="navigate" class="uploader-text">
+      <text>处理异常</text>
+    </navigator>
+  </view>
+
+  <!-- 确认异常 -->
+  <view class="uploader">
+    <navigator url="../confirmList/confirmList" open-type="navigate" class="uploader-text">
+      <text>确认异常</text>
+    </navigator>
+  </view>
+
+</view>
