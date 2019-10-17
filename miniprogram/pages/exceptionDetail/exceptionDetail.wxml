@@ -1,0 +1,2 @@
+<!--miniprogram/pages/exceptionDetail/exceptionDetail.wxml-->
+<view>{{id}}</view>
