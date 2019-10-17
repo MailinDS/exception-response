@@ -30,7 +30,15 @@ Page({
    */
   onLoad: function (options) {
     var now = new Date();
-    var today = now.getFullYear() + '-' + (now.getMonth() + 1) + '-' + now.getDate();
+    var month = now.getMonth() + 1;
+    var date = now.getDate();
+    if (month < 10) {
+      month = '0' + month;
+    }
+    if (date < 10) {
+      date = '0' + date;
+    }
+    var today = now.getFullYear() + '-' + month + '-' + date;
     this.setData({
       nameInput: app.globalData.name,
       departmentInput: app.globalData.department,
