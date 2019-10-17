@@ -37,8 +37,6 @@
 
 .submit-button {
   width: 680rpx;
-  height: 78rpx;
   border-radius: 10rpx;
   margin-top: 40rpx;
-  line-height: 80rpx;
 }

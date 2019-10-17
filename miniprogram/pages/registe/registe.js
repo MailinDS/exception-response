@@ -1,4 +1,5 @@
 // miniprogram/pages/registe/registe.js
+const app = getApp()
 const db = wx.cloud.database()
 
 Page({
@@ -52,14 +53,16 @@ Page({
       })
       return false;
     }
-    // var that = this;
+    var that = this;
     db.collection('person').add({
       data: {
-        name: this.data.inputName,
-        department: this.data.departmentArray[this.data.index]
+        name: that.data.inputName,
+        department: that.data.departmentArray[that.data.index]
       },
       success: function() {
         wx.hideLoading();
+        app.globalData.name = that.data.inputName;
+        app.globalData.department = that.data.departmentArray[that.data.index];
         wx.showToast({
           title: '注册成功',
         })

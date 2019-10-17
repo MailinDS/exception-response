@@ -15,7 +15,7 @@
   align-items: center;
 }
 
-.name-input, .department-input, .date-input, .exception-input, .project-no-input, .project-name-input {
+.name-input, .department-input, .date-input, .exception-input, .project-no-input, .project-name-input, .duty-depart-input, .deal-depart-input {
   width: 650rpx;
   height: 80rpx;
   border-radius: 10rpx;
@@ -54,13 +54,41 @@
 .dwg-add {
   width: 80rpx;
   height: 80rpx;
+  margin-top: 8rpx;
+  margin-left: 10rpx;
+}
+
+.explain-input {
+  width: 650rpx;
+  height: 140rpx;
+  border-radius: 10rpx;
+  padding: 20rpx;
   margin-top: 18rpx;
-  position: relative;
-  left: -285rpx;
+  background-color: white;
+  font-size: 26rpx;
+  color: #333333;
 }
 
 .input-placeholder {
   color: #CCCCCC;
 }
 
+.upload-button {
+  width: 680rpx;
+  border-radius: 10rpx;
+  margin-top: 40rpx;
+  border: 1rpx solid #DDDDDD;
+}
+.submit-button {
+  width: 680rpx;
+  border-radius: 10rpx;
+  margin-top: 18rpx;
+  margin-bottom: 50rpx;
+}
 
+.add-cut-img {
+  width: 60rpx;
+  height: 60rpx;
+  margin-top: 10rpx;
+  margin-left: 10rpx;
+}

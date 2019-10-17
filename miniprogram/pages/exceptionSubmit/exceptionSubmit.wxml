@@ -1,6 +1,6 @@
 <!--miniprogram/pages/exceptionSubmit/exceptionSubmit.wxml-->
 <view class="container">
-  <view class="input-view">
+  <scroll-view class="input-view" scroll-y="true">
     <view class="name-input">{{nameInput}}</view>
     <view class="department-input">{{departmentInput}}</view>
     <view class="date-input">{{dateInput}}</view>
@@ -12,11 +12,25 @@
     <block wx:for="{{dwgNoList}}" wx:key="{{index}}">
       <view class="dwg-no-input-view">
         <input class="dwg-no-input" type="text" value="{{item}}" bindinput="changeDwgVal" data-id="{{index}}" placeholder="图号" placeholder-class="input-placeholder"></input>
-        <view class="dwg-cut" data-id="{{index}}" bindtap="dwgCut">减</view>
+        <view class="dwg-cut" data-id="{{index}}" bindtap="dwgCut"><image class="add-cut-img" src="../../images/cut.png"></image></view>
       </view>
     </block>
-    <view class="dwg-add" bindtap="dwgAdd">加</view>
+    <view class="dwg-add" bindtap="dwgAdd"><image class="add-cut-img" src="../../images/add.png"></image></view>
     <input class="project-no-input" type="text" value="{{projectNoInput}}" bindinput="changeProjectNoVal" placeholder="工程号" placeholder-class="input-placeholder"></input>
     <input class="project-name-input" type="text" value="{{projectNameInput}}" bindinput="changeProjectNameVal" placeholder="工程名称" placeholder-class="input-placeholder"></input>
-  </view>
+    <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
+      <view class="duty-depart-input" style="color:{{bIndex==-1?'#CCCCCC':'#333333'}}">
+        {{bIndex==-1?'责任单位':dutyDepartArray[bIndex]}}
+      </view>
+    </picker>
+    <picker bindchange="bindDealDepartChange" value="{{cIndex}}" range="{{dealDepartArray}}">
+      <view class="deal-depart-input" style="color:{{cIndex==-1?'#CCCCCC':'#333333'}}">
+        {{cIndex==-1?'处理单位':dealDepartArray[cIndex]}}
+      </view>
+    </picker>
+    <textarea class="explain-input" value="{{explainInput}}" bindinput="changeExplainVal" placeholder="异常说明" placeholder-class="input-placeholder"></textarea>
+
+    <button class="upload-button" type='default' size='default' bindtap="doUpload">{{uploadButton}}</button>
+    <button class="submit-button" type='primary' size='default' bindtap="doSubmit">提交</button>
+  </scroll-view>
 </view>
