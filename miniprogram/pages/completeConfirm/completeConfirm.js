@@ -24,8 +24,8 @@ Page({
         that.setData({
           exceptionContent: res.data,
         })
-        // 如果状态是待处理，责任单位和处理单位能看到接收按钮
-        if (that.data.exceptionContent.status == '已接收' && that.data.exceptionContent.department == app.globalData.department) {
+        // 如果状态是已接收，异常发起人能看到完成异常button
+        if (that.data.exceptionContent.status == '已接收' && that.data.exceptionContent.name == app.globalData.name) {
           that.setData({
             completeBtnVisible: true,
           })
@@ -51,6 +51,9 @@ Page({
 
   // 完成异常
   exceptionComplete: function() {
+    wx.showLoading({
+      title: '处理中',
+    })
     var that = this
     var now = new Date();
     var submitDate = new Date(this.data.exceptionContent.submitDate + " 00:00:00");

@@ -26,7 +26,7 @@ Page({
   getTotal: function () {
     var that = this
     db.collection('exception').where({
-      name: app.globalData.name
+      department: app.globalData.department
     }).count({
       success(res) {
         that.setData({
@@ -43,7 +43,7 @@ Page({
     })
     var that = this
     db.collection('exception').where({
-      name: app.globalData.name
+      department: app.globalData.department
     }).where(db.command.or([
       {
         name: {
