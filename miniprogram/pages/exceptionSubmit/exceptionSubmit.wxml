@@ -28,7 +28,7 @@
         {{cIndex==-1?'处理单位':dealDepartArray[cIndex]}}
       </view>
     </picker>
-    <textarea class="explain-input" value="{{explainInput}}" bindinput="changeExplainVal" placeholder="异常说明" placeholder-class="input-placeholder"></textarea>
+    <textarea class="explain-input" value="{{explainInput}}" bindinput="changeExplainVal" placeholder="异常说明" placeholder-class="input-placeholder" maxlength="-1"></textarea>
 
     <button class="upload-button" type='default' size='default' bindtap="doUpload">{{uploadButton}}</button>
     <button class="submit-button" type='primary' size='default' bindtap="doSubmit">提交</button>

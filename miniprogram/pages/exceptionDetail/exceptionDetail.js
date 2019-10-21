@@ -1,19 +1,65 @@
 // miniprogram/pages/exceptionDetail/exceptionDetail.js
+const app = getApp()
+const db = wx.cloud.database()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id: '',
+    exceptionContent: {},
+    replyBtnVisible: false,
+    imgUrlList: [],
+    imgNum: 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id:options.id
+    var that = this;
+    db.collection('exception').doc(options.id).get({
+      success(res) {
+        that.setData({
+          exceptionContent: res.data,
+        })
+        // 如果状态是待处理，责任单位和处理单位能看到接收按钮
+        if (that.data.exceptionContent.status == '待处理' && that.data.exceptionContent.dealDepart == app.globalData.department) {
+          that.setData({
+            replyBtnVisible: true,
+          })
+        }
+        // 用图片fileID换取图片临时链接
+        wx.cloud.getTempFileURL({
+          fileList: that.data.exceptionContent.fileIDList,
+          success: res => {
+            var imgUrlTemp = [];
+            for (var i = 0; i < res.fileList.length; i++) {
+              imgUrlTemp.push(res.fileList[i].tempFileURL)
+            }
+            that.setData({
+              imgUrlList: imgUrlTemp,
+              imgNum: imgUrlTemp.length,
+            })
+          },
+          fail: console.error
+        })
+      }
+    })
+  },
+
+  toExceptionReceive: function() {
+    wx.navigateTo({
+      url: '../exceptionReceive/exceptionReceive?id=' + this.data.exceptionContent._id,
+    })
+  },
+
+  imgViewTap: function(e) {
+    var i = Number(e.currentTarget.dataset.imgNo)
+    wx.previewImage({
+      urls: this.data.imgUrlList,
+      current: this.data.imgUrlList[i]
     })
   },
 

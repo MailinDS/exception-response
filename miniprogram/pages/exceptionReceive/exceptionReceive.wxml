@@ -1,2 +1,15 @@
 <!--miniprogram/pages/exceptionReceive/exceptionReceive.wxml-->
-<text>miniprogram/pages/exceptionReceive/exceptionReceive.wxml</text>
+<view class="container">
+  <view class="input-view">
+    <picker bindchange="bindSolveDateChange" mode="date" value="{{solveDate}}">
+      <view class="date-input" style="color:{{solveDate==''?'#CCCCCC':'#333333'}}">
+        {{solveDate==''?'预计解决日期':solveDate}}
+      </view>
+    </picker>
+
+    <textarea class="solution-input" value="{{solutionInput}}" bindinput="changeSolutionVal" placeholder="解决办法" placeholder-class="input-placeholder" maxlength="-1"></textarea>
+
+    <button class="submit-button" type='primary' size='default' bindtap="receiveSubmit">提交</button>
+
+  </view>
+</view>
