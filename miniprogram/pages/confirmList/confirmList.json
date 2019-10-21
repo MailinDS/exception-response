@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {},
+  "onReachBottomDistance": 5,
+  "navigationBarTitleText": "确认异常"
 }

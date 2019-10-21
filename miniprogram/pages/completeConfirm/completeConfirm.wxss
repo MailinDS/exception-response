@@ -1,1 +1,31 @@
 /* miniprogram/pages/completeConfirm/completeConfirm.wxss */
+.container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.container view {
+  width: 650rpx;
+  margin-left: 50rpx;
+  font-size: 25rpx;
+  line-height: 40rpx;
+  margin-top: 10rpx;
+  word-break: break-all;
+}
+
+.exception-img {
+  width: 640rpx;
+  margin-left: 5rpx;
+  border-radius: 8rpx;
+  box-shadow: 0 2rpx 5rpx 5rpx #DDDDDD;
+}
+
+.container button {
+  margin-top: 20rpx;
+  margin-bottom: 30rpx;
+  width: 630rpx;
+  margin-left: 60rpx;
+}

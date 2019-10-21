@@ -1,2 +1,25 @@
 <!--miniprogram/pages/completeConfirm/completeConfirm.wxml-->
-<text>miniprogram/pages/completeConfirm/completeConfirm.wxml</text>
+<scroll-view class="container" scroll-y="true">
+  <view>车间：{{exceptionContent.department}}</view>
+  <view>提出时间：{{exceptionContent.submitDate}}</view>
+  <view>姓名：{{exceptionContent.name}}</view>
+  <view>异常一级：{{exceptionContent.exceptionLV1}}</view>
+  <view>异常二级：{{exceptionContent.exceptionLV2}}</view>
+  <view>异常三级：{{exceptionContent.exceptionLV3}}</view>
+  <view>原料图号：{{exceptionContent.dwgNoList}}</view>
+  <view>工程号：{{exceptionContent.projectNo}}</view>
+  <view>工程名称：{{exceptionContent.projectName}}</view>
+  <view>异常描述：{{exceptionContent.exceptionExplain}}</view>
+  <view>责任单位：{{exceptionContent.dutyDepart}}</view>
+  <view>处理单位：{{exceptionContent.dealDepart}}</view>
+  <view>是否按时响应：{{exceptionContent.dealDepartReplyOnTime}}</view>
+  <view>解决办法：{{exceptionContent.reply}}</view>
+  <view>预计解决时间：{{exceptionContent.expectDealTime}}</view>
+  <view>实际解决时间：{{exceptionContent.dealTime}}</view>
+  <view>影响天数：{{exceptionContent.effectTime}}</view>
+  <view>图片（{{imgNum}}张）</view>
+  <view wx:for="{{imgUrlList}}" wx:key="{{index}}">
+    <image src="{{item}}" class="exception-img" mode='widthFix' bindtap='imgViewTap' data-img-no="{{index}}"></image>
+  </view>
+  <button wx:if="{{completeBtnVisible}}" type="primary" size="default" bindtap="exceptionComplete">完成异常</button>
+</scroll-view>

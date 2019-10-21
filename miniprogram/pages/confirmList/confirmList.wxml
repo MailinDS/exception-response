@@ -1,2 +1,15 @@
 <!--miniprogram/pages/confirmList/confirmList.wxml-->
-<text>miniprogram/pages/confirmList/confirmList.wxml</text>
+<scroll-view class='container' scroll-y="true">
+  <view class='search-view'>
+    <input class='search-input' type='text' confirm-type='搜索' bindconfirm='search' value='{{searchInput}}' bindinput='changeSearchInput' placeholder='搜索' placeholder-class='search-input-placeholder'></input>
+  </view>
+  <view class='for-beauty'></view>
+  <view class='exception-item' hover-class='exception-item-press' wx:for="{{exceptionList}}" wx:key="{{item._id}}" bindtap='showDetail' data-exception-id="{{item._id}}">
+    <text class='item-text' decode='true'>{{item.department}}&ensp;&ensp;{{item.name}}</text>
+    <text class='item-date'>{{item.submitDate}}</text>
+    <text class='item-point' wx:if="{{item.status=='待处理'}}"></text>
+    <text class='item-point-on' wx:if="{{item.status=='已接收'}}"></text>
+    <text class='item-point-ok' wx:if="{{item.status=='已处理'}}"></text>
+  </view>
+  <view class='for-beauty'></view>
+</scroll-view>

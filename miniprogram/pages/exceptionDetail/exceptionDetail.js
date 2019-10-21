@@ -55,6 +55,7 @@ Page({
     })
   },
 
+  // 图片预览
   imgViewTap: function(e) {
     var i = Number(e.currentTarget.dataset.imgNo)
     wx.previewImage({
