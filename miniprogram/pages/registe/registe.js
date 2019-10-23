@@ -9,27 +9,47 @@ Page({
    */
   data: {
     inputName: '',
-    departmentArray: ['部门A', '部门B', '部门C', '部门D', '部门E'],
+    departmentArray: ['机加车间', '壳体车间', '绝缘车间', '表面镀银', '表面油漆', '铸造公司', '有限精饰', '供应处（外协）', '供应处（外购）', '设备能源处'],
     objectDepartmentArray: [
       {
         id: 0,
-        name: '部门A'
+        name: '机加车间'
       },
       {
         id: 1,
-        name: '部门B'
+        name: '壳体车间'
       },
       {
         id: 2,
-        name: '部门C'
+        name: '绝缘车间'
       },
       {
         id: 3,
-        name: '部门D'
+        name: '表面镀银'
       },
       {
         id: 4,
-        name: '部门E'
+        name: '表面油漆'
+      },
+      {
+        id: 5,
+        name: '铸造公司'
+      },
+      {
+        id: 6,
+        name: '有限精饰'
+      },
+      {
+        id: 7,
+        name: '供应处（外协）'
+      },
+      {
+        id: 8,
+        name: '供应处（外购）'
+      },
+      {
+        id: 9,
+        name: '设备能源处'
       }
     ],
     index: -1,
