@@ -1,0 +1,88 @@
+/* miniprogram/pages/showList/showList.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.for-beauty {
+  width: 750rpx;
+  height: 10rpx;
+}
+
+.search-input {
+  width: 650rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  margin-left: 30rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  margin-top: 10rpx;
+  background-color: white;
+  line-height: 80rpx;
+  font-size: 26rpx;
+  color: #333333;
+}
+
+.search-button {
+  width: 680rpx;
+  margin-left: 35rpx;
+  border-radius: 10rpx;
+  margin-top: 15rpx;
+}
+
+.exception-item {
+  margin-top: 8rpx;
+  margin-left: 10rpx;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 5rpx;
+  background-color: white;
+  width: 730rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+}
+
+.exception-item-press {
+  background-color: rgb(234, 238, 241);
+}
+
+.item-text {
+  color: rgba(0, 0, 0, 0.705);
+  padding-left: 30rpx;
+  width: 450rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-size: 36rpx;
+}
+
+.item-date {
+  color: rgba(0, 0, 0, 0.425);
+  margin-left: 30rpx;
+  font-size: 28rpx;
+}
+
+.item-point {
+  background-color: rgba(255, 0, 0, 0.5);
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+  margin-left: 26rpx;
+}
+
+.item-point-on {
+  background-color: rgba(255, 255, 0, 0.3);
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+  margin-left: 26rpx;
+}
+
+.item-point-ok {
+  background-color: rgba(0, 128, 0, 0.5);
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 8rpx;
+  margin-left: 26rpx;
+}

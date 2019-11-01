@@ -1,0 +1,28 @@
+<!--miniprogram/pages/showList/showList.wxml-->
+<scroll-view class='container' scroll-y="true">
+  <picker bindchange="bindSubmitDepartChange" value="{{aIndex}}" range="{{submitDepartArray}}">
+    <view class="search-input" style="color:{{aIndex==-1?'#CCCCCC':'#333333'}}">
+      {{aIndex==-1?'发起部门':submitDepartArray[aIndex]}}
+    </view>
+  </picker>
+  <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
+    <view class="search-input" style="color:{{bIndex==-1?'#CCCCCC':'#333333'}}">
+      {{bIndex==-1?'责任部门':dutyDepartArray[bIndex]}}
+    </view>
+  </picker>
+  <picker bindchange="bindStatusChange" value="{{cIndex}}" range="{{statusArray}}">
+    <view class="search-input" style="color:{{cIndex==-1?'#CCCCCC':'#333333'}}">
+      {{cIndex==-1?'处理状态':statusArray[cIndex]}}
+    </view>
+  </picker>
+  <button class="search-button" type='primary' size='default' bindtap="search">查询</button>
+  <view class="for-beauty"></view>
+  <view class='exception-item' hover-class='exception-item-press' wx:for="{{exceptionList}}" wx:key="{{item._id}}" bindtap='showDetail' data-exception-id="{{item._id}}">
+    <text class='item-text' decode='true'>{{item.department}}&ensp;&ensp;{{item.name}}</text>
+    <text class='item-date'>{{item.submitDate}}</text>
+    <text class='item-point' wx:if="{{item.status=='待处理'}}"></text>
+    <text class='item-point-on' wx:if="{{item.status=='已接收'}}"></text>
+    <text class='item-point-ok' wx:if="{{item.status=='已处理'}}"></text>
+  </view>
+  <view class='for-beauty'></view>
+</scroll-view>

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {},
+  "onReachBottomDistance": 5,
+  "navigationBarTitleText": "异常列表"
+}

@@ -9,7 +9,9 @@
     "pages/mainPage/mainPage",
     "pages/receiveList/receiveList",
     "pages/confirmList/confirmList",
-    "pages/exceptionDetail/exceptionDetail"
+    "pages/exceptionDetail/exceptionDetail",
+    "pages/showList/showList",
+    "pages/showDetail/showDetail"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",

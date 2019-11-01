@@ -22,4 +22,11 @@
     </navigator>
   </view>
 
+  <!-- 查询异常 -->
+  <view class="uploader">
+    <navigator url="../showList/showList" open-type="navigate" class="uploader-text">
+      <text>查询异常</text>
+    </navigator>
+  </view>
+
 </view>
