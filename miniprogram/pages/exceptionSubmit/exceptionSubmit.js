@@ -11,14 +11,14 @@ Page({
     nameInput: '',
     departmentInput: '',
     dateInput: '',
-    multiArray: [['AA', 'BB', 'CC'], ['AA01', 'AA02', 'AA03', 'AA04', 'AA05'], ['AA01001', 'AA01002']],
+    multiArray: [['质量', '设计', '缺件', '设备'], ['断路器', '隔离开关', '接地开关', 'PT/CT/LA', '母线/分支/内导', '备品备件', '机构', '绝缘件', '底架/支架/附件', 'LCP柜'], ['壳体外观五害油漆', '导体类镀银质量', '加工尺寸不符', '机构问题', '其它']],
     multiIndex: [-1, -1, -1],
     dwgNoList: [''],
     projectNoInput: '',
     projectNameInput: '',
-    dutyDepartArray: ['机加车间', '壳体车间', '绝缘车间', '表面镀银', '表面油漆', '铸造公司', '有限精饰', '供应处（外协）', '供应处（外购）', '设备能源处'],
+    dutyDepartArray: ['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司'],
     bIndex: -1,
-    dealDepartArray: ['机加车间', '壳体车间', '绝缘车间', '表面镀银', '表面油漆', '铸造公司', '有限精饰', '供应处（外协）', '供应处（外购）', '设备能源处'],
+    dealDepartArray: ['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司'],
     cIndex: -1,
     explainInput: '',
     fileIDList: [],
@@ -249,16 +249,20 @@ Page({
       case 0:
         switch (data.multiIndex[0]) {
           case 0:
-            data.multiArray[1] = ['AA01', 'AA02', 'AA03', 'AA04', 'AA05'];
-            data.multiArray[2] = ['AA01001', 'AA01002'];
+            data.multiArray[1] = ['断路器', '隔离开关', '接地开关', 'PT/CT/LA', '母线/分支/内导', '备品备件', '机构', '绝缘件', '底架/支架/附件', 'LCP柜'];
+            data.multiArray[2] = ['壳体外观五害油漆', '导体类镀银质量', '加工尺寸不符', '机构问题', '其它'];
             break;
           case 1:
-            data.multiArray[1] = ['BB01', 'BB02', 'BB03'];
-            data.multiArray[2] = ['BB01001', 'BB01002', 'BB01003'];
+            data.multiArray[1] = ['断路器', '隔离开关', '接地开关', 'PT/CT/LA', '母线/分支/内导', '总装', '备品备件', '机构', 'LCP柜'];
+            data.multiArray[2] = ['错漏投', '其它'];
             break;
           case 2:
-            data.multiArray[1] = ['CC01', 'CC02'];
-            data.multiArray[2] = ['CC01001'];
+            data.multiArray[1] = ['断路器', '隔离开关', '接地开关', '总装', 'LCP柜'];
+            data.multiArray[2] = ['导体', '绝缘件', '外壳', '机构', '其它'];
+            break;
+          case 3:
+            data.multiArray[1] = ['设备'];
+            data.multiArray[2] = ['设备', '其它'];
         }
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
@@ -268,42 +272,91 @@ Page({
           case 0:
             switch (data.multiIndex[1]) {
               case 0:
-                data.multiArray[2] = ['AA01001', 'AA01002'];
+                data.multiArray[2] = ['壳体外观五害油漆', '导体类镀银质量', '加工尺寸不符', '机构问题', '其它'];
                 break;
               case 1:
-                data.multiArray[2] = ['AA02001'];
+                data.multiArray[2] = ['壳体外观五害油漆', '导体类镀银质量', '其它'];
                 break;
               case 2:
-                data.multiArray[2] = ['AA03001', 'AA03002'];
+                data.multiArray[2] = ['壳体外观五害油漆', '导体类镀银质量', '其它'];
                 break;
               case 3:
-                data.multiArray[2] = ['AA04001', 'AA04002', 'AA04003'];
+                data.multiArray[2] = ['壳体外观五害油漆', '内部清理问题', '外壳漏气', '其它'];
                 break;
               case 4:
-                data.multiArray[2] = ['AA05001', 'AA05002', 'AA05003', 'AA05004'];
+                data.multiArray[2] = ['壳体外观五害油漆', '导体磕碰划伤', '外壳面清理质量', '导体类外表面质量', '铸造导体砂眼', '导体类镀银质量', '其它'];
+                break;
+              case 5:
+                data.multiArray[2] = ['壳体外观五害油漆', '其它'];
+                break;
+              case 6:
+                data.multiArray[2] = ['外观质量', '调试问题', '其它'];
+                break;
+              case 7:
+                data.multiArray[2] = ['磕碰.划伤', '放电击穿清理问题', '杂质.异物', '其它'];
+                break;
+              case 8:
+                data.multiArray[2] = ['表面质量', '孔位错误', '加工尺寸不符', '其它'];
+                break;
+              case 9:
+                data.multiArray[2] = ['柜内缺件', '规格错漏', '接线错误', '其它'];
                 break;
             }
             break;
           case 1:
             switch (data.multiIndex[1]) {
               case 0:
-                data.multiArray[2] = ['BB01001', 'BB01002', 'BB01003'];
+                data.multiArray[2] = ['错漏投', '其它'];
                 break;
               case 1:
-                data.multiArray[2] = ['BB02001', 'BB02002'];
+                data.multiArray[2] = ['错漏投', '其它'];
                 break;
               case 2:
-                data.multiArray[2] = ['BB03001', 'BB03002', 'BB03003'];
+                data.multiArray[2] = ['错漏投', '其它'];
+                break;
+              case 3:
+                data.multiArray[2] = ['错漏投', '其它'];
+                break;
+              case 4:
+                data.multiArray[2] = ['错漏投', '电阻错.无正式版', '图纸.JT错误', '其它'];
+                break;
+              case 5:
+                data.multiArray[2] = ['错漏投', '电阻错.无正式版', '图纸.JT错误', '其它'];
+                break;
+              case 6:
+                data.multiArray[2] = ['错漏投', '其它'];
+                break;
+              case 7:
+                data.multiArray[2] = ['错漏投', '其它'];
+                break;
+              case 8:
+                data.multiArray[2] = ['错漏投', '其它'];
                 break;
             }
             break;
           case 2:
             switch (data.multiIndex[1]) {
               case 0:
-                data.multiArray[2] = ['CC01001'];
+                data.multiArray[2] = ['导体', '绝缘件', '外壳', '机构', '其它'];
                 break;
               case 1:
-                data.multiArray[2] = ['CC02001', 'CC02002'];
+                data.multiArray[2] = ['导体', '绝缘件', '外壳', '机构', '其它'];
+                break;
+              case 2:
+                data.multiArray[2] = ['导体', '绝缘件', '外壳', '机构', '其它'];
+                break;
+              case 3:
+                data.multiArray[2] = ['绝缘件', '波纹管', '避雷器', '底架.支架', '盖板.法兰', '导体', '外壳', '备品备件', '其它'];
+                break;
+              case 4:
+                data.multiArray[2] = ['智能化处二次元件', '二次元件', '铭牌', '其它'];
+                break;
+            }
+            break;
+          case 3:
+            switch (data.multiIndex[1]) {
+              case 0:
+                data.multiArray[2] = ['设备', '其它'];
                 break;
             }
             break;
