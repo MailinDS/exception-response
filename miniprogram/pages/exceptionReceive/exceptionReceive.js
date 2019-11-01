@@ -36,7 +36,7 @@ Page({
     // 查看状态是否待处理
     db.collection('exception').doc(that.data.id).get({
       success(res) {
-        var submitDate = new Date(res.data.submitDate);
+        var submitDate = new Date(res.data.submitDate.replace(/-/g, "/"));
         var now = new Date();
         if (submitDate.getFullYear() == now.getFullYear() && submitDate.getMonth() == now.getMonth() && submitDate.getDate() == now.getDate()) {
           var dealDepartReplyOnTime = '是';

@@ -56,8 +56,13 @@ Page({
     })
     var that = this
     var now = new Date();
-    var submitDate = new Date(this.data.exceptionContent.submitDate + " 00:00:00");
-    var effectTime = parseInt((now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000));
+    var submitDate = new Date(this.data.exceptionContent.submitDate.replace(/-/g, "/") + " 00:00:00");
+    var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
+    if (effectTimeFloat < 1) {
+      var effectTime = 0;
+    } else {
+      var effectTime = parseInt(effectTimeFloat);
+    }
     var dealMonth = now.getMonth() + 1;
     if (dealMonth < 10) {
       dealMonth = '0' + dealMonth;
