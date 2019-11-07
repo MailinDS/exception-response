@@ -18,9 +18,14 @@
     <view class="dwg-add" bindtap="dwgAdd"><image class="add-cut-img" src="../../images/add.png"></image></view>
     <input class="project-no-input" type="text" value="{{projectNoInput}}" bindinput="changeProjectNoVal" placeholder="工程号" placeholder-class="input-placeholder"></input>
     <input class="project-name-input" type="text" value="{{projectNameInput}}" bindinput="changeProjectNameVal" placeholder="工程名称" placeholder-class="input-placeholder"></input>
-    <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
+    <!-- <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
       <view class="duty-depart-input" style="color:{{bIndex==-1?'#CCCCCC':'#333333'}}">
         {{bIndex==-1?'责任单位':dutyDepartArray[bIndex]}}
+      </view>
+    </picker> -->
+    <picker mode="multiSelector" bindchange="bindDutyChange" bindcolumnchange="bindDutyColumnChange" value="{{dutyIndex}}" range="{{dutyArray}}">
+      <view class="duty-depart-input" style="color:{{dutyIndex[0]==-1||dutyIndex[1]==-1?'#CCCCCC':'#333333'}}">
+        {{dutyIndex[0]==-1?'责任单位':dutyArray[0][dutyIndex[0]]}}/{{dutyIndex[1]==-1?'责任人':dutyArray[1][dutyIndex[1]]}}
       </view>
     </picker>
     <picker bindchange="bindDealDepartChange" value="{{cIndex}}" range="{{dealDepartArray}}">

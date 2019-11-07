@@ -41,7 +41,9 @@ Page({
     } else {
       var dutyDepart = that.data.dutyDepartArray[that.data.bIndex];
     }
-    if (that.data.cIndex == -1 || that.data.cIndex == 0) {
+    if (that.data.cIndex == -1) {
+      var status = '((待处理)|(已接收))';
+    } else if (that.data.cIndex == 0) {
       var status = '';
     } else {
       var status = that.data.statusArray[that.data.cIndex];
@@ -87,7 +89,9 @@ Page({
     } else {
       var dutyDepart = that.data.dutyDepartArray[that.data.bIndex];
     }
-    if (that.data.cIndex == -1 || that.data.cIndex == 0) {
+    if (that.data.cIndex == -1) {
+      var status = '((待处理)|(已接收))';
+    } else if (that.data.cIndex == 0) {
       var status = '';
     } else {
       var status = that.data.statusArray[that.data.cIndex];
@@ -108,12 +112,24 @@ Page({
           $regex: '.*' + status + '.*'
         }
       }
-    ])).orderBy('submitDate', 'desc').skip((page - 1) * 20).limit(20).get({
+    ])).orderBy('department', 'desc').skip((page - 1) * 20).limit(20).get({
       success(res) {
         // res.data 是包含以上定义的记录的数组
-        var listTemp = that.data.exceptionList
+        var listTemp = that.data.exceptionList;
+        var resTemp = res.data;
+        for (var i = 0; i < resTemp.length; i++) {
+          if (resTemp[i].status == "已处理") {
+            resTemp[i]['effectDate'] = resTemp[i].effectTime;
+          } else {
+            var submitDate = new Date(resTemp[i].submitDate.replace(/-/g, "/") + " 00:00:00");
+            var now = new Date();
+            var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
+            var effectTime = parseInt(effectTimeFloat);
+            resTemp[i]['effectDate'] = effectTime;
+          }
+        }
         that.setData({
-          exceptionList: listTemp.concat(res.data)
+          exceptionList: listTemp.concat(resTemp)
         })
         // console.log(that.data.problemList)
       },

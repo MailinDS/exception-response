@@ -11,13 +11,13 @@ Page({
     nameInput: '',
     departmentInput: '',
     dateInput: '',
-    multiArray: [['质量', '设计', '缺件', '设备'], ['断路器', '隔离开关', '接地开关', 'PT/CT/LA', '母线/分支/内导', '备品备件', '机构', '绝缘件', '底架/支架/附件', 'LCP柜'], ['壳体外观五害油漆', '导体类镀银质量', '加工尺寸不符', '机构问题', '其它']],
+    multiArray: [['质量', '设计', '缺件', '设备', '计划'], ['断路器', '隔离开关', '接地开关', 'PT/CT/LA', '母线/分支/内导', '备品备件', '机构', '绝缘件', '底架/支架/附件', 'LCP柜'], ['壳体外观五害油漆', '导体类镀银质量', '加工尺寸不符', '机构问题', '其它']],
     multiIndex: [-1, -1, -1],
     dwgNoList: [''],
     projectNoInput: '',
     projectNameInput: '',
-    dutyDepartArray: ['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司'],
-    bIndex: -1,
+    dutyArray: [['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司'], ['杨江涛']],
+    dutyIndex: [-1, -1],
     dealDepartArray: ['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司'],
     cIndex: -1,
     explainInput: '',
@@ -57,7 +57,7 @@ Page({
     }
 
     // 必填项不能为空
-    if (this.data.multiIndex[0] == -1 || this.data.multiIndex[1] == -1 || this.data.multiIndex[2] == -1 || this.data.projectNoInput == '' || this.data.projectNameInput == '' || this.data.bIndex == -1 || this.data.cIndex == -1 || this.data.explainInput == '') {
+    if (this.data.multiIndex[0] == -1 || this.data.multiIndex[1] == -1 || this.data.multiIndex[2] == -1 || this.data.projectNoInput == '' || this.data.projectNameInput == '' || this.data.dutyIndex[0] == -1 || this.data.dutyIndex[1] == -1 || this.data.cIndex == -1 || this.data.explainInput == '') {
       wx.showToast({
         icon: 'none',
         title: '必填项不能为空',
@@ -90,7 +90,8 @@ Page({
         projectNo: that.data.projectNoInput,
         projectName: that.data.projectNameInput,
         exceptionExplain: that.data.explainInput,
-        dutyDepart: that.data.dutyDepartArray[that.data.bIndex],
+        dutyDepart: that.data.dutyArray[0][that.data.dutyIndex[0]],
+        dutyPerson: that.data.dutyArray[1][that.data.dutyIndex[1]],
         dutyDepartReplyOnTime: '',
         dealDepart: that.data.dealDepartArray[that.data.cIndex],
         dealDepartReplyOnTime: '',
@@ -215,11 +216,11 @@ Page({
     })
   },
 
-  bindDutyDepartChange: function(e) {
-    this.setData({
-      bIndex: e.detail.value
-    })
-  },
+  // bindDutyDepartChange: function(e) {
+  //   this.setData({
+  //     bIndex: e.detail.value
+  //   })
+  // },
 
   bindDealDepartChange: function(e) {
     this.setData({
@@ -231,6 +232,80 @@ Page({
     this.setData({
       explainInput: e.detail.value
     })
+  },
+
+  bindDutyChange: function(e) {
+    this.setData({
+      dutyIndex: e.detail.value
+    })
+  },
+
+  bindDutyColumnChange: function(e) {
+    var data = {
+      dutyArray: this.data.dutyArray,
+      dutyIndex: this.data.dutyIndex
+    };
+    data.dutyIndex[e.detail.column] = e.detail.value;
+    if (e.detail.column == 0) {
+      switch (data.dutyIndex[0]) {
+        case 0:
+          data.dutyArray[1] = ['杨江涛'];
+          break;
+        case 1:
+          data.dutyArray[1] = ['闫练'];
+          break;
+        case 2:
+          data.dutyArray[1] = ['时龙斌'];
+          break;
+        case 3:
+          data.dutyArray[1] = ['吴亚旭'];
+          break;
+        case 4:
+          data.dutyArray[1] = ['李韬'];
+          break;
+        case 5:
+          data.dutyArray[1] = ['张香', '张敏', '樊梅花', '刘伟刚'];
+          break;
+        case 6:
+          data.dutyArray[1] = ['王薇', '李军', '李伟', '刘新涛'];
+          break;
+        case 7:
+          data.dutyArray[1] = ['王云', '丁瑞'];
+          break;
+        case 8:
+          data.dutyArray[1] = ['卢德军', '段春龙'];
+          break;
+        case 9:
+          data.dutyArray[1] = ['丁嘉宝', '王婵', '池西鹏'];
+          break;
+        case 10:
+          data.dutyArray[1] = ['杨彦刚', '高博强'];
+          break;
+        case 11:
+          data.dutyArray[1] = ['黄志峰', '徐吉豹'];
+          break;
+        case 12:
+          data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
+          break;
+        case 13:
+          data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
+          break;
+        case 14:
+          data.dutyArray[1] = [];
+          break;
+        case 15:
+          data.dutyArray[1] = [];
+          break;
+        case 16:
+          data.dutyArray[1] = [];
+          break;
+        case 17:
+          data.dutyArray[1] = [];
+          break;
+      }
+      data.dutyIndex[1] = 0;
+    }
+    this.setData(data);
   },
 
   bindMultiPickerChange: function (e) {
@@ -263,6 +338,11 @@ Page({
           case 3:
             data.multiArray[1] = ['设备'];
             data.multiArray[2] = ['设备', '其它'];
+            break;
+          case 4:
+            data.multiArray[1] = ['上下工序'];
+            data.multiArray[2] = ['未按规则收料', '未按时办理手续', '未按规则发料', '未按时发拉动需求', '其它'];
+            break;
         }
         data.multiIndex[1] = 0;
         data.multiIndex[2] = 0;
@@ -357,6 +437,13 @@ Page({
             switch (data.multiIndex[1]) {
               case 0:
                 data.multiArray[2] = ['设备', '其它'];
+                break;
+            }
+            break;
+          case 4:
+            switch (data.multiIndex[1]) {
+              case 0:
+                data.multiArray[2] = ['未按规则收料', '未按时办理手续', '未按规则发料', '未按时发拉动需求', '其它'];
                 break;
             }
             break;

@@ -11,6 +11,7 @@
   <view>工程名称：{{exceptionContent.projectName}}</view>
   <view>异常描述：{{exceptionContent.exceptionExplain}}</view>
   <view>责任单位：{{exceptionContent.dutyDepart}}</view>
+  <view>责任人：{{exceptionContent.dutyPerson}}</view>
   <view>处理单位：{{exceptionContent.dealDepart}}</view>
   <view>是否按时响应：{{exceptionContent.dealDepartReplyOnTime}}</view>
   <view>解决办法：{{exceptionContent.reply}}</view>

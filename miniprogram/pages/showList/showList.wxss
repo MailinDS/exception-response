@@ -47,42 +47,88 @@
   background-color: rgb(234, 238, 241);
 }
 
-.item-text {
+.item-text1 {
   color: rgba(0, 0, 0, 0.705);
-  padding-left: 30rpx;
-  width: 450rpx;
+  margin-left: 10rpx;
+  width: 160rpx;
   overflow: hidden;
   white-space: nowrap;
   text-overflow:ellipsis;
-  font-size: 36rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.item-text2, .item-text3 {
+  color: rgba(0, 0, 0, 0.705);
+  margin-left: 20rpx;
+  width: 160rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  font-size: 32rpx;
+  text-align: center;
 }
 
 .item-date {
   color: rgba(0, 0, 0, 0.425);
-  margin-left: 30rpx;
+  margin-left: auto;
+  margin-right: 42rpx;
   font-size: 28rpx;
 }
 
 .item-point {
-  background-color: rgba(255, 0, 0, 0.5);
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 8rpx;
-  margin-left: 26rpx;
+  background-color: rgb(255, 0, 0);
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  /* margin-left: auto; */
+  margin-right: 32rpx;
 }
 
 .item-point-on {
-  background-color: rgba(255, 255, 0, 0.3);
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 8rpx;
-  margin-left: 26rpx;
+  background-color: rgb(255, 255, 0);
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  /* margin-left: auto; */
+  margin-right: 32rpx;
 }
 
 .item-point-ok {
-  background-color: rgba(0, 128, 0, 0.5);
-  width: 16rpx;
-  height: 16rpx;
-  border-radius: 8rpx;
-  margin-left: 26rpx;
+  background-color: rgb(0, 128, 0);
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 15rpx;
+  /* margin-left: auto; */
+  margin-right: 32rpx;
+}
+
+.exception-item-title {
+  margin-top: 8rpx;
+  margin-left: 10rpx;
+  width: 730rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+}
+
+.item-text1-title {
+  color: rgba(0, 0, 0, 0.425);
+  margin-left: 10rpx;
+  width: 160rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+.item-text2-title, .item-text3-title {
+  color: rgba(0, 0, 0, 0.425);
+  margin-left: 20rpx;
+  width: 160rpx;
+  font-size: 32rpx;
+  text-align: center;
+}
+
+.item-date-title {
+  color: rgba(0, 0, 0, 0.425);
+  margin-left: auto;
+  margin-right: 60rpx;
+  font-size: 32rpx;
 }
