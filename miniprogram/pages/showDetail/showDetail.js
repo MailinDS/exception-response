@@ -17,6 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu();
     var that = this;
     db.collection('exception').doc(options.id).get({
       success(res) {

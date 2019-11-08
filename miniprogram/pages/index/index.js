@@ -11,6 +11,7 @@ Page({
   },
 
   onLoad: function() {
+    wx.hideShareMenu();
     wx.showLoading({
       title: '加载中',
     })
@@ -34,8 +35,19 @@ Page({
           success(re) {
             console.log(re.data);
             if (re.data.length == 0) {
-              wx.reLaunch({
-                url: '../registe/registe',
+              db.collection('openRegiste').doc('ef92f8f4-49eb-4d4d-afaa-e4f7c49dcd4d').get({
+                success(resp) {
+                  if (resp.data.isOpen == 1) {
+                    wx.reLaunch({
+                      url: '../registe/registe',
+                    })
+                  } else {
+                    wx.showToast({
+                      icon: 'none',
+                      title: '未开放注册',
+                    })
+                  }
+                }
               })
             } else {
               app.globalData.name = re.data[0].name;

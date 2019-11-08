@@ -29,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.hideShareMenu();
     var now = new Date();
     var month = now.getMonth() + 1;
     var date = now.getDate();
