@@ -1,41 +1,43 @@
 <!--miniprogram/pages/exceptionSubmit/exceptionSubmit.wxml-->
 <view class="container">
-  <scroll-view class="input-view" scroll-y="true">
-    <view class="name-input">{{nameInput}}</view>
-    <view class="department-input">{{departmentInput}}</view>
-    <view class="date-input">{{dateInput}}</view>
-    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-      <view class="exception-input" style="color:{{multiIndex[0]==-1||multiIndex[1]==-1||multiIndex[2]==-1?'#CCCCCC':'#333333'}}">
-        {{multiIndex[0]==-1?'异常一级':multiArray[0][multiIndex[0]]}}/{{multiIndex[1]==-1?'异常二级':multiArray[1][multiIndex[1]]}}/{{multiIndex[2]==-1?'异常三级':multiArray[2][multiIndex[2]]}}
-      </view>
-    </picker>
-    <block wx:for="{{dwgNoList}}" wx:key="{{index}}">
-      <view class="dwg-no-input-view">
-        <input class="dwg-no-input" type="text" value="{{item}}" bindinput="changeDwgVal" data-id="{{index}}" placeholder="图号" placeholder-class="input-placeholder"></input>
-        <view class="dwg-cut" data-id="{{index}}" bindtap="dwgCut"><image class="add-cut-img" src="../../images/cut.png"></image></view>
-      </view>
-    </block>
-    <view class="dwg-add" bindtap="dwgAdd"><image class="add-cut-img" src="../../images/add.png"></image></view>
-    <input class="project-no-input" type="text" value="{{projectNoInput}}" bindinput="changeProjectNoVal" placeholder="工程号" placeholder-class="input-placeholder"></input>
-    <input class="project-name-input" type="text" value="{{projectNameInput}}" bindinput="changeProjectNameVal" placeholder="工程名称" placeholder-class="input-placeholder"></input>
-    <!-- <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
-      <view class="duty-depart-input" style="color:{{bIndex==-1?'#CCCCCC':'#333333'}}">
-        {{bIndex==-1?'责任单位':dutyDepartArray[bIndex]}}
-      </view>
-    </picker> -->
-    <picker mode="multiSelector" bindchange="bindDutyChange" bindcolumnchange="bindDutyColumnChange" value="{{dutyIndex}}" range="{{dutyArray}}">
-      <view class="duty-depart-input" style="color:{{dutyIndex[0]==-1||dutyIndex[1]==-1?'#CCCCCC':'#333333'}}">
-        {{dutyIndex[0]==-1?'责任单位':dutyArray[0][dutyIndex[0]]}}/{{dutyIndex[1]==-1?'责任人':dutyArray[1][dutyIndex[1]]}}
-      </view>
-    </picker>
-    <picker bindchange="bindDealDepartChange" value="{{cIndex}}" range="{{dealDepartArray}}">
-      <view class="deal-depart-input" style="color:{{cIndex==-1?'#CCCCCC':'#333333'}}">
-        {{cIndex==-1?'处理单位':dealDepartArray[cIndex]}}
-      </view>
-    </picker>
-    <textarea class="explain-input" value="{{explainInput}}" bindinput="changeExplainVal" placeholder="异常说明" placeholder-class="input-placeholder" maxlength="-1"></textarea>
+  <form bindsubmit="doSubmit" report-submit='true' report-submit-timeout='2000'>
+    <scroll-view class="input-view" scroll-y="true">
+      <view class="name-input">{{nameInput}}</view>
+      <view class="department-input">{{departmentInput}}</view>
+      <view class="date-input">{{dateInput}}</view>
+      <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+        <view class="exception-input" style="color:{{multiIndex[0]==-1||multiIndex[1]==-1||multiIndex[2]==-1?'#CCCCCC':'#333333'}}">
+          {{multiIndex[0]==-1?'异常一级':multiArray[0][multiIndex[0]]}}/{{multiIndex[1]==-1?'异常二级':multiArray[1][multiIndex[1]]}}/{{multiIndex[2]==-1?'异常三级':multiArray[2][multiIndex[2]]}}
+        </view>
+      </picker>
+      <block wx:for="{{dwgNoList}}" wx:key="{{index}}">
+        <view class="dwg-no-input-view">
+          <input class="dwg-no-input" type="text" value="{{item}}" bindinput="changeDwgVal" data-id="{{index}}" placeholder="图号" placeholder-class="input-placeholder"></input>
+          <view class="dwg-cut" data-id="{{index}}" bindtap="dwgCut"><image class="add-cut-img" src="../../images/cut.png"></image></view>
+        </view>
+      </block>
+      <view class="dwg-add" bindtap="dwgAdd"><image class="add-cut-img" src="../../images/add.png"></image></view>
+      <input class="project-no-input" type="text" value="{{projectNoInput}}" bindinput="changeProjectNoVal" placeholder="工程号" placeholder-class="input-placeholder"></input>
+      <input class="project-name-input" type="text" value="{{projectNameInput}}" bindinput="changeProjectNameVal" placeholder="工程名称" placeholder-class="input-placeholder"></input>
+      <!-- <picker bindchange="bindDutyDepartChange" value="{{bIndex}}" range="{{dutyDepartArray}}">
+        <view class="duty-depart-input" style="color:{{bIndex==-1?'#CCCCCC':'#333333'}}">
+          {{bIndex==-1?'责任单位':dutyDepartArray[bIndex]}}
+        </view>
+      </picker> -->
+      <picker mode="multiSelector" bindchange="bindDutyChange" bindcolumnchange="bindDutyColumnChange" value="{{dutyIndex}}" range="{{dutyArray}}">
+        <view class="duty-depart-input" style="color:{{dutyIndex[0]==-1||dutyIndex[1]==-1?'#CCCCCC':'#333333'}}">
+          {{dutyIndex[0]==-1?'责任单位':dutyArray[0][dutyIndex[0]]}}/{{dutyIndex[1]==-1?'责任人':dutyArray[1][dutyIndex[1]]}}
+        </view>
+      </picker>
+      <picker bindchange="bindDealDepartChange" value="{{cIndex}}" range="{{dealDepartArray}}">
+        <view class="deal-depart-input" style="color:{{cIndex==-1?'#CCCCCC':'#333333'}}">
+          {{cIndex==-1?'处理单位':dealDepartArray[cIndex]}}
+        </view>
+      </picker>
+      <textarea class="explain-input" value="{{explainInput}}" bindinput="changeExplainVal" placeholder="异常说明" placeholder-class="input-placeholder" maxlength="-1"></textarea>
 
-    <button class="upload-button" type='default' size='default' bindtap="doUpload">{{uploadButton}}</button>
-    <button class="submit-button" type='primary' size='default' bindtap="doSubmit">提交</button>
-  </scroll-view>
+      <button class="upload-button" type='default' size='default' bindtap="doUpload">{{uploadButton}}</button>
+      <button class="submit-button" type='primary' size='default' form-type="submit">提交</button>
+    </scroll-view>
+  </form>
 </view>

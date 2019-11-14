@@ -47,7 +47,7 @@ Page({
     })
   },
 
-  doSubmit: function() {
+  doSubmit: function(e) {
     // 姓名，部门，日期不能为空
     if (this.data.nameInput == '' || this.data.departmentInput == '' || this.data.dateInput == '') {
       wx.showToast({
@@ -102,6 +102,7 @@ Page({
         effectTime: '',
         fileIDList: that.data.fileIDList,
         status: '待处理',
+        formId: e.detail.formId,
       },
       success: function() {
         wx.showToast({
@@ -268,7 +269,7 @@ Page({
           data.dutyArray[1] = ['张香', '张敏', '樊梅花', '刘伟刚'];
           break;
         case 6:
-          data.dutyArray[1] = ['王薇', '李军', '李伟', '刘新涛'];
+          data.dutyArray[1] = ['王薇', '李军', '李伟', '刘鑫涛'];
           break;
         case 7:
           data.dutyArray[1] = ['王云', '丁瑞'];
@@ -280,10 +281,10 @@ Page({
           data.dutyArray[1] = ['丁嘉宝', '王婵', '池西鹏'];
           break;
         case 10:
-          data.dutyArray[1] = ['杨彦刚', '高博强'];
+          data.dutyArray[1] = ['周高平', '任强', '高博强', '高升'];
           break;
         case 11:
-          data.dutyArray[1] = ['黄志峰', '徐吉豹'];
+          data.dutyArray[1] = ['杨静', '李婉妮', '徐吉豹', '石妮'];
           break;
         case 12:
           data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
@@ -292,16 +293,16 @@ Page({
           data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
           break;
         case 14:
-          data.dutyArray[1] = [];
+          data.dutyArray[1] = ['杨光普'];
           break;
         case 15:
-          data.dutyArray[1] = [];
+          data.dutyArray[1] = ['姚宏轩(CT)', '张勇(HJ)', '李强(JG)'];
           break;
         case 16:
-          data.dutyArray[1] = [];
+          data.dutyArray[1] = ['周军强'];
           break;
         case 17:
-          data.dutyArray[1] = [];
+          data.dutyArray[1] = ['陈宏强'];
           break;
       }
       data.dutyIndex[1] = 0;
