@@ -16,7 +16,7 @@ Page({
     dwgNoList: [''],
     projectNoInput: '',
     projectNameInput: '',
-    dutyArray: [['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司', '中低压公司', '西菱公司'], ['杨江涛']],
+    dutyArray: [['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司', '中低压公司', '西菱公司'], ['杨江涛(计调)', '杨秦星(800工艺)', '王旭光(800设计)', '杨喜龙(800设计)']],
     dutyIndex: [-1, -1],
     dealDepartArray: ['特高压', '超高压', '总二车间', '总三车间', '母线车间', '表面镀银', '表面油漆', '机加车间', '壳体车间', '绝缘车间', '供应外协', '供应外购', '126产线', '252产线', '西开铸造', '西开有限', '表面精饰', '机构公司', '中低压公司', '西菱公司'],
     cIndex: -1,
@@ -79,6 +79,11 @@ Page({
     })
     // 保存至数据库
     var that = this;
+    var dutyPerson = that.data.dutyArray[1][that.data.dutyIndex[1]];
+    var i = dutyPerson.indexOf('(');
+    if (i != -1) {
+      dutyPerson = dutyPerson.substring(0, i);
+    }
     db.collection('exception').add({
       data: {
         name: that.data.nameInput,
@@ -92,7 +97,7 @@ Page({
         projectName: that.data.projectNameInput,
         exceptionExplain: that.data.explainInput,
         dutyDepart: that.data.dutyArray[0][that.data.dutyIndex[0]],
-        dutyPerson: that.data.dutyArray[1][that.data.dutyIndex[1]],
+        dutyPerson: dutyPerson,
         dutyDepartReplyOnTime: '',
         dealDepart: that.data.dealDepartArray[that.data.cIndex],
         dealDepartReplyOnTime: '',
@@ -251,46 +256,46 @@ Page({
     if (e.detail.column == 0) {
       switch (data.dutyIndex[0]) {
         case 0:
-          data.dutyArray[1] = ['杨江涛'];
+          data.dutyArray[1] = ['杨江涛(计调)', '杨秦星(800工艺)', '王旭光(800设计)', '杨喜龙(800设计)'];
           break;
         case 1:
-          data.dutyArray[1] = ['闫练'];
+          data.dutyArray[1] = ['闫练(计调)', '于庄鑫(550设计)'];
           break;
         case 2:
-          data.dutyArray[1] = ['时龙斌'];
+          data.dutyArray[1] = ['时龙斌(计调)'];
           break;
         case 3:
-          data.dutyArray[1] = ['吴亚旭'];
+          data.dutyArray[1] = ['吴亚旭(计调)'];
           break;
         case 4:
-          data.dutyArray[1] = ['李韬'];
+          data.dutyArray[1] = ['李韬(计调)'];
           break;
         case 5:
-          data.dutyArray[1] = ['张香', '张敏', '樊梅花', '刘伟刚'];
+          data.dutyArray[1] = ['樊梅花(126)', '张敏(252)', '刘伟刚(550)', '张香(800)'];
           break;
         case 6:
-          data.dutyArray[1] = ['王薇', '李军', '李伟', '刘鑫涛'];
+          data.dutyArray[1] = ['李伟(126)', '李军(252)', '刘鑫涛(550)', '王薇(800)'];
           break;
         case 7:
-          data.dutyArray[1] = ['王云', '丁瑞'];
+          data.dutyArray[1] = ['王云(126/800)', '丁瑞(252/550)'];
           break;
         case 8:
           data.dutyArray[1] = ['卢德军', '段春龙'];
           break;
         case 9:
-          data.dutyArray[1] = ['丁嘉宝', '王婵', '池西鹏'];
+          data.dutyArray[1] = ['池西鹏(126)', '王婵(252)', '丁嘉宝(550/800)'];
           break;
         case 10:
-          data.dutyArray[1] = ['周高平', '任强', '高博强', '高升'];
+          data.dutyArray[1] = ['高博强(126)', '任强(252)', '高升(550)', '周高平(800)', '杨彦刚'];
           break;
         case 11:
-          data.dutyArray[1] = ['杨静', '李婉妮', '徐吉豹', '石妮'];
+          data.dutyArray[1] = ['徐吉豹(126)', '李婉妮(252)', '石妮(550)', '杨静(800)', '黄志峰'];
           break;
         case 12:
-          data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
+          data.dutyArray[1] = ['王震(126设计)'];
           break;
         case 13:
-          data.dutyArray[1] = ['杨秦星', '冯继亮', '王震', '于庄鑫'];
+          data.dutyArray[1] = ['冯继亮(252设计)'];
           break;
         case 14:
           data.dutyArray[1] = ['杨光普'];
