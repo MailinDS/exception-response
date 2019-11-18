@@ -33,6 +33,77 @@ Page({
       {
         dealDepart: app.globalData.department
       }
+    ])).where(db.command.or([
+      {
+        name: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        department: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        status: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        exceptionLV1: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        exceptionLV2: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        exceptionLV3: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        projectNo: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        projectName: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        submitDate: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dutyDepart: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dutyPerson: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        exceptionExplain: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dealDepart: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        reply: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      }
     ])).count({
       success(res) {
         that.setData({
@@ -98,6 +169,31 @@ Page({
       },
       {
         submitDate: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dutyDepart: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dutyPerson: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        exceptionExplain: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        dealDepart: {
+          $regex: '.*' + that.data.searchInput + '.*'
+        }
+      },
+      {
+        reply: {
           $regex: '.*' + that.data.searchInput + '.*'
         }
       }
