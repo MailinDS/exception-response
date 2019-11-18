@@ -23,7 +23,7 @@ Page({
       success(res) {
         var exceptionTemp = res.data;
         if (exceptionTemp.status != "已处理") {
-          var submitDate = new Date(exceptionTemp.submitDate.replace(/-/g, "/") + " 00:00:00");
+          var submitDate = new Date(exceptionTemp.submitDate.replace(/-/g, "/"));
           var now = new Date();
           var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
           var effectTime = parseInt(effectTimeFloat);

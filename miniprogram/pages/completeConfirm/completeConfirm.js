@@ -57,7 +57,7 @@ Page({
     })
     var that = this
     var now = new Date();
-    var submitDate = new Date(this.data.exceptionContent.submitDate.replace(/-/g, "/") + " 00:00:00");
+    var submitDate = new Date(this.data.exceptionContent.submitDate.replace(/-/g, "/"));
     var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
     var effectTime = parseInt(effectTimeFloat);
     var dealMonth = now.getMonth() + 1;
@@ -68,7 +68,15 @@ Page({
     if (dealDate < 10) {
       dealDate = '0' + dealDate;
     }
-    var dealTime = now.getFullYear() + '-' + dealMonth + '-' + dealDate;
+    var dealHour = now.getHours();
+    if (dealHour < 10) {
+      dealHour = '0' + dealHour;
+    }
+    var dealMinute = now.getMinutes();
+    if (dealMinute < 10) {
+      dealMinute = '0' + dealMinute;
+    }
+    var dealTime = now.getFullYear() + '-' + dealMonth + '-' + dealDate + ' ' + dealHour + ':' + dealMinute;
     wx.cloud.callFunction({
       name: 'onComplete',
       data: {

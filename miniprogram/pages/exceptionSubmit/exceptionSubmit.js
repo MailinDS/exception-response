@@ -33,13 +33,21 @@ Page({
     var now = new Date();
     var month = now.getMonth() + 1;
     var date = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
     if (month < 10) {
       month = '0' + month;
     }
     if (date < 10) {
       date = '0' + date;
     }
-    var today = now.getFullYear() + '-' + month + '-' + date;
+    if (hour < 10) {
+      hour = '0' + hour;
+    }
+    if (minute < 10) {
+      minute = '0' + minute;
+    }
+    var today = now.getFullYear() + '-' + month + '-' + date + ' ' + hour + ':' + minute;
     this.setData({
       nameInput: app.globalData.name,
       departmentInput: app.globalData.department,

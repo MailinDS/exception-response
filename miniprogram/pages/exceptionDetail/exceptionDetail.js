@@ -51,6 +51,14 @@ Page({
   },
 
   toExceptionReceive: function() {
+    var tempMessage = {
+      "formId": this.data.exceptionContent.formId,
+      "openId": this.data.exceptionContent._openid,
+      "submitDate": this.data.exceptionContent.submitDate,
+      "dutyDepart": this.data.exceptionContent.dutyDepart,
+      "dutyPerson": this.data.exceptionContent.dutyPerson
+    }
+    wx.setStorageSync("tempMessage", tempMessage);
     wx.navigateTo({
       url: '../exceptionReceive/exceptionReceive?id=' + this.data.exceptionContent._id,
     })

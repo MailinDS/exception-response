@@ -200,9 +200,13 @@ Page({
     ])).orderBy('submitDate', 'desc').skip((page - 1) * 20).limit(20).get({
       success(res) {
         // res.data 是包含以上定义的记录的数组
-        var listTemp = that.data.exceptionList
+        var listTemp = that.data.exceptionList;
+        var resTemp = res.data;
+        for (var i = 0; i < resTemp.length; i++) {
+          resTemp[i]['submitDate'] = resTemp[i].submitDate.substring(0, 10)
+        }
         that.setData({
-          exceptionList: listTemp.concat(res.data)
+          exceptionList: listTemp.concat(resTemp)
         })
         // console.log(that.data.problemList)
       },

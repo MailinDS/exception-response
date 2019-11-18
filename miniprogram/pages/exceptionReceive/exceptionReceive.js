@@ -39,7 +39,9 @@ Page({
       success(res) {
         var submitDate = new Date(res.data.submitDate.replace(/-/g, "/"));
         var now = new Date();
-        if (submitDate.getFullYear() == now.getFullYear() && submitDate.getMonth() == now.getMonth() && submitDate.getDate() == now.getDate()) {
+        var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
+        var effectTime = parseInt(effectTimeFloat);
+        if (effectTime == 0) {
           var dealDepartReplyOnTime = '是';
         } else {
           var dealDepartReplyOnTime = '否';
@@ -56,15 +58,31 @@ Page({
               reply: that.data.solutionInput,
             },
             success: res => {
-              wx.hideLoading();
-              wx.showToast({
-                title: '接收成功',
+              var tempMessage = wx.getStorageSync("tempMessage");
+              wx.removeStorageSync("tempMessage");
+              console.log(tempMessage)
+              wx.cloud.callFunction({
+                name: 'formNotify',
+                data: {
+                  formId: tempMessage.formId,
+                  openId: tempMessage.openId,
+                  submitDate: tempMessage.submitDate,
+                  dutyDepart: tempMessage.dutyDepart,
+                  dutyPerson: tempMessage.dutyPerson,
+                  expectDealTime: that.data.solveDate
+                },
+                complete: res => {
+                  wx.hideLoading();
+                  wx.showToast({
+                    title: '接收成功',
+                  })
+                  setTimeout(function () {
+                    wx.navigateBack({
+                      delta: 3,
+                    })
+                  }, 1000)
+                }
               })
-              setTimeout(function(){
-                wx.navigateBack({
-                  delta: 3,
-                })
-              }, 1000)
             },
             fail: err => {
               console.error('[云函数] [onHandle] 调用失败', err)

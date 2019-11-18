@@ -122,7 +122,7 @@ Page({
           if (resTemp[i].status == "已处理") {
             resTemp[i]['effectDate'] = resTemp[i].effectTime;
           } else {
-            var submitDate = new Date(resTemp[i].submitDate.replace(/-/g, "/") + " 00:00:00");
+            var submitDate = new Date(resTemp[i].submitDate.replace(/-/g, "/"));
             var now = new Date();
             var effectTimeFloat = (now.getTime() - submitDate.getTime()) / (24 * 60 * 60 * 1000);
             var effectTime = parseInt(effectTimeFloat);

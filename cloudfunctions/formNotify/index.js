@@ -4,7 +4,8 @@ exports.main = async (event, context) => {
   var openId = event.openId;
   var submitDate = event.submitDate;
   var dutyDepart = event.dutyDepart;
-  var reply = event.reply;
+  var dutyPerson = event.dutyPerson;
+  var expectDealTime = event.expectDealTime;
   var formId = event.formId;
   try {
     const result = await cloud.openapi.templateMessage.send({
@@ -17,10 +18,13 @@ exports.main = async (event, context) => {
           value: dutyDepart
         },
         keyword3: {
-          value: reply
+          value: dutyPerson
+        },
+        keyword4: {
+          value: expectDealTime
         }
       },
-      templateId: 'TEMPLATE_ID',
+      templateId: 'OFTheF-ptLIxGEvmaEMBsFEfkuUdKAzSH1SVGrgHjro',
       formId: formId,
     })
     console.log(result)
